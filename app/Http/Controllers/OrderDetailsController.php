@@ -9,7 +9,6 @@ class OrderDetailsController extends Controller
 {
     public function store(Request $request)
     {
-        // Validate request data
         $validatedData = $request->validate([
             'customer_id' => 'required|integer',
             'product' => 'required|string',
@@ -17,8 +16,6 @@ class OrderDetailsController extends Controller
             'order_total' => 'required',
         ]);
         
-        //dd($validatedData);
-        // Create new order detail
         $orderDetail = OrderDetail::create($validatedData);
         
         return response()->json(['message' => 'Order details submitted successfully', 'data' => $orderDetail]);
